@@ -21,7 +21,7 @@ class TestBooksCollector:
         assert len(collector.get_books_rating()) == 2
 
     # напиши свои тесты ниже
-    #Проверяем что не добавляется дубликат книги
+    # Проверяем что не добавляется дубликат книги
     def test_add_new_book_duplicate_false(self):
         collector = BooksCollector()
         collector.add_new_book('Война и мир')
@@ -29,14 +29,14 @@ class TestBooksCollector:
         collector.add_new_book('Война и мир')
         assert len(collector.get_books_rating()) == 2
 
-    #Проверяем что при добавлении книги присваивается рейтинг "1"
+    # Проверяем что при добавлении книги присваивается рейтинг 1
     def test_add_new_book_rating_is_1(self):
         collector = BooksCollector()
         collector.add_new_book('Чук и Гек')
         collector.add_new_book('Джейн Эйр')
         assert collector.books_rating['Чук и Гек'] == 1
 
-    #Проверяем что можем присвоить рейтинг книге
+    # Проверяем что можем присвоить рейтинг книге
     def test_set_book_rating_is_6(self):
         collector = BooksCollector()
         collector.add_new_book('Незнайка на Луне')
@@ -44,14 +44,14 @@ class TestBooksCollector:
         collector.set_book_rating('Незнайка на Луне', 6)
         assert collector.books_rating['Незнайка на Луне'] == 6
 
-        # Проверяем что не можем присвоить рейтинг книге, которой нет в списке
+    # Проверяем что не можем присвоить рейтинг книге, которой нет в списке
     def test_set_book_rating_not_in_list(self):
         collector = BooksCollector()
         collector.add_new_book('Три богатыря')
         collector.add_new_book('Царевна-лягушка')
         assert collector.set_book_rating('Огниво', 6) == None
 
-    #Проверяем что не можем присвоить книге рейтинг меньше 1
+    # Проверяем что не можем присвоить книге рейтинг меньше 1
     def test_set_book_rating_smaller_than_1(self):
         collector = BooksCollector()
         collector.add_new_book('Мы')
@@ -59,7 +59,7 @@ class TestBooksCollector:
         collector.set_book_rating('Мы', 0)
         assert collector.set_book_rating('Незнайка на Луне', 0) == None
 
-    #Проверяем что можем посмотреть рейтинг книги по ее имени
+    # Проверяем что можем посмотреть рейтинг книги по ее имени
     def test_get_book_rating(self):
         collector = BooksCollector()
         collector.add_new_book('Бойцовский клуб')
@@ -67,7 +67,7 @@ class TestBooksCollector:
         collector.set_book_rating('Бойцовский клуб', 6)
         assert collector.get_book_rating('Заводной апельсин')
 
-    #Проверяем что можем получить список книг с определенным рейтингом
+    # Проверяем что можем получить список книг с определенным рейтингом
     def test_get_books_with_specific_rating(self):
         collector = BooksCollector()
         collector.add_new_book('Каштанка')
@@ -84,7 +84,7 @@ class TestBooksCollector:
         collector.add_new_book('Старуха Изергиль')
         assert collector.get_books_rating()
 
-    #Проверяем добавление книги в избранное
+    # Проверяем добавление книги в избранное
     def test_add_book_in_favorites(self):
         collector = BooksCollector()
         collector.add_new_book('Как закалялась сталь')
@@ -103,7 +103,7 @@ class TestBooksCollector:
         collector.delete_book_from_favorites('Что такое хорошо')
         assert 'Что такое хорошо' not in collector.favorites
 
-    #Проверяем что выводится список избранных книг
+    # Проверяем что выводится список избранных книг
     def test_get_list_of_favorites_books(self):
         collector = BooksCollector()
         collector.add_new_book('Дядя Федор, пес и кот')
